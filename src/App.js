@@ -1,16 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Navbar } from 'react-bootstrap';
+import { Navbar, Container   } from 'react-bootstrap';
+import Menu from './components/MenuComponent'
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Navbar bg="primary" variant="dark">
-        <div className="container">
+        <Container>
           <Navbar.Brand href="/">Ristorante Con Fusion</Navbar.Brand>
-        </div>
+        </Container>
       </Navbar>
+      <Menu />
     </div>
   );
 }
