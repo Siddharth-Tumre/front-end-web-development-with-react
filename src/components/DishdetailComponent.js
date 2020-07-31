@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Card, Row, Container } from 'react-bootstrap'
 
-class Dishdetail extends Component {
-    renderDish(dish) {
+    const RenderDish = ({dish}) => {
         if (dish != null) {
             return(
                 <Card style={{width:"100%"}}>
@@ -20,7 +19,7 @@ class Dishdetail extends Component {
         }
     }
 
-    renderComments(comments) {
+    const RenderComments = ({comments}) => {
         if (comments != null){
             comments = comments.map((x) => {
                 const id = x.id
@@ -49,25 +48,25 @@ class Dishdetail extends Component {
         }
     }
 
-    render() {
-        const dish = this.props.dish
+    const Dishdetail = (props) => {
+        const dish = props.dish
         let comments = null
         if (dish != null) {
             comments = dish.comments
         }
+        console.log(dish)
         return (
             <Container>
                 <Row>
                     <div className="col-12 col-md-5 m-1">
-                        {this.renderDish(dish)}
+                        <RenderDish dish={dish} />
                     </div>
                     <div className="col-12 col-md-5 m-1">
-                        {this.renderComments(comments)}
+                        <RenderComments comments={comments} />
                     </div> 
                 </Row>    
             </Container>
         )
     }
-}
 
 export default Dishdetail
