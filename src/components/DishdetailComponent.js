@@ -1,11 +1,7 @@
 import React, { Component } from 'react'
-import { Card, Row } from 'react-bootstrap'
+import { Card, Row, Container } from 'react-bootstrap'
 
 class Dishdetail extends Component {
-    constructor(props) {
-        super(props)
-    }
-
     renderDish(dish) {
         if (dish != null) {
             return(
@@ -30,11 +26,7 @@ class Dishdetail extends Component {
                 const id = x.id
                 const author = x.author
                 const comment = x.comment
-                let date = new Date(x.date)
-                let o = new Intl.DateTimeFormat("en" , {
-                    dateStyle: "medium"
-                  });
-                date = o.format(date).toString();
+                const date = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(x.date)))
                 return (
                     <div key={id} className="mt-4">
                         <li>{comment}</li>
@@ -64,14 +56,16 @@ class Dishdetail extends Component {
             comments = dish.comments
         }
         return (
-            <Row>
-                <div className="col-12 col-md-5 m-1">
-                    {this.renderDish(dish)}
-                </div>
-                <div className="col-12 col-md-5 m-1">
-                    {this.renderComments(comments)}
-                </div> 
-            </Row>    
+            <Container>
+                <Row>
+                    <div className="col-12 col-md-5 m-1">
+                        {this.renderDish(dish)}
+                    </div>
+                    <div className="col-12 col-md-5 m-1">
+                        {this.renderComments(comments)}
+                    </div> 
+                </Row>    
+            </Container>
         )
     }
 }
